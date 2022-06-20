@@ -6,10 +6,13 @@
 //  Copyright © 2018 Emerson Malca. All rights reserved.
 //
 
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 #import "TimelineViewController.h"
 #import "APIManager.h"
 
 @interface TimelineViewController ()
+- (IBAction)didTapLogout:(id)sender;
 
 @end
 
@@ -17,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
@@ -47,5 +49,17 @@
 }
 */
 
+
+- (IBAction)didTapLogout:(id)sender {
+    // TimelineViewController.m
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    
+    [[APIManager shared] logout];
+
+}
 
 @end
