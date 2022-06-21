@@ -68,3 +68,5 @@ fastlane/screenshots/**/*.png
 fastlane/test_output
 
 Keys.plist
+
+Keys.plist

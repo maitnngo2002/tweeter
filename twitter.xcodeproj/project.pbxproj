@@ -17,7 +17,7 @@
 		6AD278F620BCB68B0085BC29 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD278F520BCB68B0085BC29 /* APIManager.m */; };
 		6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD2790520BCC0380085BC29 /* LoginViewController.m */; };
 		6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD2790820BCC04D0085BC29 /* TimelineViewController.m */; };
-		D6F928C728611D8500CD67A1 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6F928C628611D8500CD67A1 /* Keys.plist */; };
+		D630C01228627B7B00690BCA /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = D630C01128627B7B00690BCA /* Keys.plist */; };
 		D6FC7AEB2862639F001864EF /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FC7AEA2862639F001864EF /* User.m */; };
 		D6FC7AEE286263CE001864EF /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FC7AED286263CE001864EF /* Tweet.m */; };
 		D6FC7AF128626928001864EF /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FC7AF028626928001864EF /* TweetCell.m */; };
@@ -43,7 +43,7 @@
 		6AD2790720BCC04D0085BC29 /* TimelineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		6AD2790820BCC04D0085BC29 /* TimelineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		75895B6507775E8AFBEEA2D9 /* Pods-twitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-twitter/Pods-twitter.debug.xcconfig"; sourceTree = "<group>"; };
-		D6F928C628611D8500CD67A1 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		D630C01128627B7B00690BCA /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		D6FC7AE92862639F001864EF /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		D6FC7AEA2862639F001864EF /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		D6FC7AEC286263CE001864EF /* Tweet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 				6AD278E320BC4B970085BC29 /* LaunchScreen.storyboard */,
 				6AD278E620BC4B970085BC29 /* Info.plist */,
 				6AD278E720BC4B970085BC29 /* main.m */,
-				D6F928C628611D8500CD67A1 /* Keys.plist */,
+				D630C01128627B7B00690BCA /* Keys.plist */,
 			);
 			path = twitter;
 			sourceTree = "<group>";
@@ -218,7 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6F928C728611D8500CD67A1 /* Keys.plist in Resources */,
+				D630C01228627B7B00690BCA /* Keys.plist in Resources */,
 				6AD278E520BC4B970085BC29 /* LaunchScreen.storyboard in Resources */,
 				6AD278E220BC4B970085BC29 /* Assets.xcassets in Resources */,
 				6AD278E020BC4B950085BC29 /* Main.storyboard in Resources */,
