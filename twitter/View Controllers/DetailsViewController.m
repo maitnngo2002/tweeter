@@ -11,6 +11,8 @@
 #import "APIManager.h"
 
 @interface DetailsViewController ()
+
+
 @property (weak, nonatomic) IBOutlet UIImageView *profileView;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userLabel;

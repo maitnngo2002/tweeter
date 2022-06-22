@@ -17,7 +17,6 @@
         self.screenName = dictionary[@"screen_name"];
         self.profilePicture = dictionary[@"profile_image_url_https"];
         self.bio = dictionary[@"description"];
-        //self.backgroundPicture = dictionary[@"profile_background_image_url_https"];
         self.backgroundPicture = dictionary[@"profile_banner_url"];
         
         self.tweetCount = [NSString stringWithFormat: @"%@", dictionary[@"statuses_count"]];
