@@ -113,6 +113,9 @@
                                                     <state key="normal" image="retweet-icon">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="didTapRetweet:" destination="WHg-da-r3X" eventType="touchUpInside" id="lTC-MK-b83"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Retweet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ev-XO-Lz8">
                                                     <rect key="frame" x="172" y="79" width="63" height="21"/>
@@ -129,6 +132,9 @@
                                                     <state key="normal" image="favor-icon">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="didTapFavorite:" destination="WHg-da-r3X" eventType="touchUpInside" id="8MY-Fg-cYY"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Favorite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyK-24-oE7">
                                                     <rect key="frame" x="269" y="79" width="61" height="21"/>
@@ -192,16 +198,23 @@
                             <constraint firstItem="9tS-7S-3aJ" firstAttribute="top" secondItem="ugE-Ul-H9I" secondAttribute="top" id="rzK-Rx-EEF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="LogOut" id="MOc-fV-EZE">
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="nxx-FH-y5m">
-                            <rect key="frame" x="145" y="11" width="85" height="34.5"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Log Out"/>
+                    <navigationItem key="navigationItem" title="Home" id="MOc-fV-EZE">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="kDd-ps-VCq">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="nxx-FH-y5m">
+                                <rect key="frame" x="16" y="11" width="85" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Log Out"/>
+                                <connections>
+                                    <action selector="didTapLogout:" destination="Lbl-k5-U4i" eventType="touchUpInside" id="gsR-jh-TlU"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Compose" id="qKG-J9-9qr">
                             <connections>
-                                <action selector="didTapLogout:" destination="Lbl-k5-U4i" eventType="touchUpInside" id="gsR-jh-TlU"/>
+                                <segue destination="779-Ah-kRv" kind="presentation" id="BSl-Sb-g6U"/>
                             </connections>
-                        </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="9tS-7S-3aJ" id="XSc-Ek-WQY"/>
@@ -229,11 +242,73 @@
             </objects>
             <point key="canvasLocation" x="860" y="36.431784107946029"/>
         </scene>
+        <!--Compose View Controller-->
+        <scene sceneID="XSU-Bx-4f7">
+            <objects>
+                <viewController id="htZ-iX-FHy" customClass="ComposeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="01O-TY-9Zj" customClass="Compose">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T1q-dp-id3">
+                                <rect key="frame" x="16" y="135" width="292" height="199"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YWN-gL-gXI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7kQ-zo-j62">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="Q9f-SP-WdL">
+                            <connections>
+                                <action selector="close:" destination="htZ-iX-FHy" id="A5n-NT-1tG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="dnT-QS-Xp8">
+                            <connections>
+                                <action selector="tweet:" destination="htZ-iX-FHy" id="Q1c-ra-Ewk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="T1q-dp-id3" id="M1x-i5-ftN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4bm-BE-s4r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3287" y="37"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OJg-kR-eTs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="779-Ah-kRv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WFX-mU-N6A">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="htZ-iX-FHy" kind="relationship" relationship="rootViewController" id="00T-qd-Uk1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QEB-kJ-Nfg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2514" y="36"/>
+        </scene>
     </scenes>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
         <image name="favor-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

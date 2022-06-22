@@ -12,9 +12,11 @@
 #import "APIManager.h"
 #import "TweetCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "ComposeViewController.h"
 
 
-@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
 - (IBAction)didTapLogout:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -45,8 +47,6 @@
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
-            //self.tweetsArray = tweets;
-            //[self.tableView reloadData];
             NSLog(@"😎😎😎 Successfully loaded home timeline");
             for (Tweet *tweet in tweets) {
                 [self.tweetsArray addObject:tweet];
@@ -60,6 +60,12 @@
         [self.refreshControl endRefreshing];
     }];
 }
+
+- (void)didTweet:(Tweet *)tweet {
+    [self.tweetsArray insertObject:tweet atIndex:0];
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -112,6 +118,11 @@
 }
 */
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+   UINavigationController *navigationController = [segue destinationViewController];
+   ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+   composeController.delegate = self;
+}
 
 - (IBAction)didTapLogout:(id)sender {
     // TimelineViewController.m
