@@ -100,7 +100,8 @@
     cell.favoriteLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
         
     cell.dateLabel.text = tweet.createdAtString;
-        
+    
+    
     return cell;
 }
     
