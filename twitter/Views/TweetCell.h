@@ -8,10 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
+#import "User.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol TweetCellDelegate;
+
 @interface TweetCell : UITableViewCell
+
+@property (nonatomic, weak) id<TweetCellDelegate> delegate;
+
 @property (weak, nonatomic) IBOutlet UIImageView *profileView;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userLabel;
@@ -25,5 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) Tweet *tweet;
 
 @end
+
+@protocol TweetCellDelegate
+- (void)tweetCell:(TweetCell *) tweetCell didTap: (User *)user;
+    @end
 
 NS_ASSUME_NONNULL_END

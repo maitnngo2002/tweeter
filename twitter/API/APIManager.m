@@ -29,9 +29,7 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 - (instancetype)init {
     
     NSURL *baseURL = [NSURL URLWithString:baseURLString];
-    
-    // TODO: fix code below to pull API Keys from your new Keys.plist file
-    
+        
     NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
     NSString *key = [dict objectForKey: @"consumer_Key"];
@@ -134,6 +132,17 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         completion(nil, error);
     }];
+}
+
+- (void)getUserTimelineWithParam: (NSDictionary *)param WithCompletion:(void(^)(NSArray *tweets, NSError *error))completion {
+    
+    [self GET:@"1.1/statuses/user_timeline.json"
+   parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
+       NSMutableArray *tweets  = [Tweet tweetsWithArray:tweetDictionaries];
+       completion(tweets, nil);
+   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+       completion(nil, error);
+   }];
 }
 
 @end

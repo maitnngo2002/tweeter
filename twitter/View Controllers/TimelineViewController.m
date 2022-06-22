@@ -13,10 +13,10 @@
 #import "TweetCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "ComposeViewController.h"
+#import "DetailsViewController.h"
+#import "ProfileViewController.h"
 
-
-
-@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
+@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, TweetCellDelegate>
 - (IBAction)didTapLogout:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -101,6 +101,7 @@
         
     cell.dateLabel.text = tweet.createdAtString;
     
+    cell.delegate = self;
     
     return cell;
 }
@@ -108,6 +109,7 @@
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.tweetsArray.count;
 }
+
 
 /*
 #pragma mark - Navigation
@@ -120,9 +122,21 @@
 */
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-   UINavigationController *navigationController = [segue destinationViewController];
-   ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
-   composeController.delegate = self;
+    if([segue.identifier isEqualToString:@"detailSegue"]) {
+        TweetCell *tappedCell = sender;
+        DetailsViewController *detailsViewController =  [segue destinationViewController];
+        detailsViewController.tweet = tappedCell.tweet;
+    }
+    else if([segue.identifier isEqualToString:@"profileSegue"]) {
+        ProfileViewController *profileViewController =  [segue destinationViewController];
+        profileViewController.user = sender;
+    }
+    else {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+    }
+    
 }
 
 - (IBAction)didTapLogout:(id)sender {
@@ -137,4 +151,7 @@
 
 }
 
+- (void)tweetCell:(TweetCell *)tweetCell didTap:(User *)user{
+    [self performSegueWithIdentifier:@"profileSegue" sender:user];
+}
 @end
