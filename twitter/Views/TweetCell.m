@@ -8,6 +8,8 @@
 
 #import "TweetCell.h"
 #import "APIManager.h"
+#import "DateTools.h"
+
 
 @implementation TweetCell
 
@@ -19,6 +21,10 @@
     [self.profileView addGestureRecognizer:profileTapGestureRecognizer];
     [self.profileView setUserInteractionEnabled:YES];
     
+}
+
+- (void) formatDate:(NSDate*) date{
+    [self.dateLabel setText:[date shortTimeAgoSinceNow]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

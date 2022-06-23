@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @property (strong, nonatomic) Tweet *tweet;
-
+- (void) formatDate:(NSDate*) date;
 @end
 
 @protocol TweetCellDelegate

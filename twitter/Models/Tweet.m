@@ -37,41 +37,20 @@
         self.user = [[User alloc] initWithDictionary:user];
         
         // Format createdAt date string
-//        NSString *createdAtOriginalString = dictionary[@"created_at"];
-//        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//        // Configure the input format to parse the date string
-//        formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
-//        // Convert String to Date
-//        NSDate *date = [formatter dateFromString:createdAtOriginalString];
-//
-//
-        // Format and set createdAtString
-//        NSString *createdAtOriginalString = dictionary[@"created_at"];
-        self.createdAtString = [self formatDateString:dictionary[@"created_at"]];
+        NSString *createdAtOriginalString = dictionary[@"created_at"];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        // Configure the input format to parse the date string
+        formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
+        // Convert String to Date
+        NSDate *date = [formatter dateFromString:createdAtOriginalString];
+
+        self.createdAtString = [formatter stringFromDate:date];
 
 
     }
     return self;
 }
 
-- (NSString *)formatDateString:(NSString *)createdAtOriginalString{
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
-    
-    // Convert String to Date
-    NSDate *createdAtDate = [formatter dateFromString:createdAtOriginalString];
-    NSTimeInterval timeAgo = createdAtDate.timeIntervalSinceNow;
-    NSDate *timeAgoDate = [NSDate dateWithTimeIntervalSinceNow:timeAgo];
-    
-    // Configure output format
-    formatter.dateStyle = NSDateFormatterShortStyle;
-    formatter.timeStyle = NSDateFormatterNoStyle;
-    
-    // Convert Date to String
-    
-    return timeAgoDate.shortTimeAgoSinceNow;;
-}
 
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries {
     NSMutableArray *tweets = [NSMutableArray array];

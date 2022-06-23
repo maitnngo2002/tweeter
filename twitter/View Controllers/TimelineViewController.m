@@ -100,8 +100,12 @@
     cell.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
     cell.favoriteLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
         
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
     
-    cell.dateLabel.text = tweet.createdAtString;
+    NSDate *date = [formatter dateFromString:tweet.createdAtString];
+    [cell formatDate:date];
+//    cell.dateLabel.text = tweet.createdAtString;
     NSLog(@"%@", tweet.createdAtString);
     cell.delegate = self;
     
