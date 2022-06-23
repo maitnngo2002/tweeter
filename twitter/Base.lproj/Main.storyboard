@@ -183,7 +183,7 @@
                                             <outlet property="retweetLabel" destination="2ev-XO-Lz8" id="X5c-wb-nRh"/>
                                             <outlet property="tweetLabel" destination="Aos-xd-szy" id="CEq-Ny-kzu"/>
                                             <outlet property="userLabel" destination="ZBl-yN-lgj" id="0Y1-fj-AVw"/>
-                                            <segue destination="kMP-xA-YNJ" kind="show" id="h2o-FZ-scu"/>
+                                            <segue destination="kMP-xA-YNJ" kind="show" identifier="detailSegue" id="h2o-FZ-scu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -218,7 +218,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="9tS-7S-3aJ" id="XSc-Ek-WQY"/>
-                        <segue destination="pVX-hc-Mr9" kind="show" id="Snx-eX-tMs"/>
+                        <segue destination="pVX-hc-Mr9" kind="show" identifier="profileSegue" id="Snx-eX-tMs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQh-hN-GQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
