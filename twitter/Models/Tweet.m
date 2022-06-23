@@ -7,6 +7,8 @@
 //
 
 #import "Tweet.h"
+#import "DateTools.h"
+#import "User.h"
 
 @implementation Tweet
 
@@ -34,44 +36,44 @@
         NSDictionary *user = dictionary[@"user"];
         self.user = [[User alloc] initWithDictionary:user];
         
+        // Format createdAt date string
+//        NSString *createdAtOriginalString = dictionary[@"created_at"];
+//        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//        // Configure the input format to parse the date string
+//        formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
+//        // Convert String to Date
+//        NSDate *date = [formatter dateFromString:createdAtOriginalString];
+//
+//
         // Format and set createdAtString
-        NSString *createdAtOriginalString = dictionary[@"created_at"];
-        self.createdAtString = [self formatDate:createdAtOriginalString];
-        
+//        NSString *createdAtOriginalString = dictionary[@"created_at"];
+        self.createdAtString = [self formatDateString:dictionary[@"created_at"]];
+
+
     }
     return self;
 }
 
--(NSString *)formatDate:(NSString *)origDate {
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
-        [formatter setDateFormat:@"E MMM d HH:mm:ss Z y"];
-        NSDate *convertedDate = [formatter dateFromString:origDate];
-        NSDate *todayDate = [NSDate date];
-        double ti = [convertedDate timeIntervalSinceDate:todayDate];
-        ti = ti * -1;
-        if(ti < 1) {
-            return @"never";
-        } else  if (ti < 60) {
-            return @"less than a min ago";
-            //return [NSString stringWithFormat:@"%d less than a min ago"];
-        } else if (ti < 3600) {
-            int diff = round(ti / 60);
-            return [NSString stringWithFormat:@"%d min ago", diff];
-        } else if (ti < 86400) {
-            int diff = round(ti / 60 / 60);
-            return[NSString stringWithFormat:@"%d hr ago", diff];
-        } else if (ti < INFINITY) {
-            formatter.dateStyle = NSDateFormatterShortStyle;
-            formatter.timeStyle = NSDateFormatterNoStyle;
-            return [formatter stringFromDate:convertedDate];
-        }
-        else {
-            return @"never";
-        }
+- (NSString *)formatDateString:(NSString *)createdAtOriginalString{
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
+    
+    // Convert String to Date
+    NSDate *createdAtDate = [formatter dateFromString:createdAtOriginalString];
+    NSTimeInterval timeAgo = createdAtDate.timeIntervalSinceNow;
+    NSDate *timeAgoDate = [NSDate dateWithTimeIntervalSinceNow:timeAgo];
+    
+    // Configure output format
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    
+    // Convert Date to String
+    
+    return timeAgoDate.shortTimeAgoSinceNow;;
 }
 
-+ (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries{
++ (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries {
     NSMutableArray *tweets = [NSMutableArray array];
     for (NSDictionary *dictionary in dictionaries) {
         Tweet *tweet = [[Tweet alloc] initWithDictionary:dictionary];
@@ -79,5 +81,6 @@
     }
     return tweets;
 }
+
 
 @end

@@ -15,6 +15,7 @@
 #import "ComposeViewController.h"
 #import "DetailsViewController.h"
 #import "ProfileViewController.h"
+#import "DateTools.h"
 
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, TweetCellDelegate>
 - (IBAction)didTapLogout:(id)sender;
@@ -99,8 +100,9 @@
     cell.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
     cell.favoriteLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
         
-    cell.dateLabel.text = tweet.createdAtString;
     
+    cell.dateLabel.text = tweet.createdAtString;
+    NSLog(@"%@", tweet.createdAtString);
     cell.delegate = self;
     
     return cell;
@@ -122,21 +124,18 @@
 */
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:@"detailSegue"]) {
-        TweetCell *tappedCell = sender;
-        DetailsViewController *detailsViewController =  [segue destinationViewController];
-        detailsViewController.tweet = tappedCell.tweet;
-    }
-    else if([segue.identifier isEqualToString:@"profileSegue"]) {
-        ProfileViewController *profileViewController =  [segue destinationViewController];
-        profileViewController.user = sender;
-    }
-    else {
+    if ([segue.identifier isEqualToString:@"composeSegue"]) {
         UINavigationController *navigationController = [segue destinationViewController];
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
         composeController.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"profileSegue"]) {
+        ProfileViewController *userProfileViewController = [segue destinationViewController];
+        userProfileViewController.user = sender;
+    } else {
+        TweetCell *cell = sender;
+        DetailsViewController *tweetDetailController = [segue destinationViewController];
+        tweetDetailController.tweet = cell.tweet;
     }
-    
 }
 
 - (IBAction)didTapLogout:(id)sender {
