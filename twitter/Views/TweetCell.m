@@ -33,8 +33,8 @@
     // Configure the view for the selected state
 }
 - (IBAction)didTapFavorite:(id)sender {
-    
     if(self.tweet.favorited == NO){
+        [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateSelected];
         [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if(error){
                 NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
@@ -49,6 +49,7 @@
         }];
     }
     else {
+        [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon"] forState:UIControlStateNormal];
         [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if(error){
                 NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
@@ -66,6 +67,7 @@
 
 - (IBAction)didTapRetweet:(id)sender {
     if(self.tweet.retweeted == NO){
+        [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateSelected];
         [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if(error){
                 NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
@@ -80,6 +82,7 @@
         }];
     }
     else {
+        [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon"] forState:UIControlStateNormal];
         [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if(error){
                 NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
