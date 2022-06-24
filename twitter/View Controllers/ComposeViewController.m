@@ -9,7 +9,7 @@
 #import "ComposeViewController.h"
 #import "APIManager.h"
 
-@interface ComposeViewController ()
+@interface ComposeViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *warningLabel;
@@ -22,9 +22,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSString *text = self.textView.text;
-    self.characterCountLabel.text = [NSString stringWithFormat:@"%lu", [text length]];
+    self.textView.delegate = self;
+    [self.warningLabel setHidden:YES];
+
 }
+//
+//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+//    // Set the max character limit
+//    int characterLimit = 140;
+//
+//    // Construct what the new text would be if we allowed the user's latest edit
+//    NSString *newText = [self.textView.text stringByReplacingCharactersInRange:range withString:text];
+//
+//    // TODO: Update character count label
+//    self.characterCountLabel.text = [NSString stringWithFormat:@"%lu", [newText length]];
+//
+//    if (newText.length < characterLimit) {
+//        [self.warningLabel setHidden:YES];
+//    }
+//    // Should the new text should be allowed? True/False
+//    return newText.length < characterLimit;
+//}
+//    // TODO: Allow or disallow the new text
 
 - (void)textViewDidChange:(UITextView *)textView {
     NSString *text = self.textView.text;

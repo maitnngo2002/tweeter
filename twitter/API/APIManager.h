@@ -24,6 +24,8 @@
 - (void)retweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
 - (void)unretweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
 - (void)getUserTimelineWithParam: (NSDictionary *)Param WithCompletion:(void(^)(NSArray *tweets, NSError *error))completion;
+- (void)getCurrentUser: (void (^)(User *, NSError *))completion;
+- (void)postReplyToTweet:(NSString *)text statusId:(NSString *)statusId completion:(void (^)(Tweet *, NSError *))completion;
 
 
 @end
