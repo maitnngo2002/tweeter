@@ -54,6 +54,11 @@ Please list two areas of the assignment you'd like to **discuss further with you
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+![Demo](https://user-images.githubusercontent.com/63086003/175721753-3c394cf8-ea5a-4ca3-b481-bfd9265e860d.gif)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/63086003/175722964-87b94cc8-2e65-49a5-8fac-00ef85b78baf.gif)
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/63086003/175723187-66438126-96c3-45ed-9dab-a01911177314.gif)
+![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/63086003/175723385-6ceaeb13-eb95-4fbc-a3b6-c04bf869983e.gif)
+
 
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
