@@ -11,6 +11,9 @@
 
 @interface ComposeViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *warningLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *tweetButton;
 
 @end
 
@@ -19,7 +22,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSString *text = self.textView.text;
+    self.characterCountLabel.text = [NSString stringWithFormat:@"%lu", [text length]];
 }
+
+- (void)textViewDidChange:(UITextView *)textView {
+    NSString *text = self.textView.text;
+    NSInteger *count = [text length];
+    NSString *countString = [NSString stringWithFormat:@"%lu", count];
+    self.characterCountLabel.text = countString;
+    if(count > 140) {
+        [self.warningLabel setHidden:NO];
+        self.characterCountLabel.textColor = [UIColor redColor];
+        self.tweetButton.enabled = NO;
+    }
+    else {
+        [self.warningLabel setHidden:YES];
+        self.characterCountLabel.textColor = [UIColor blackColor];
+        self.tweetButton.enabled = YES;
+    }
+}
+
 - (IBAction)close:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
 }

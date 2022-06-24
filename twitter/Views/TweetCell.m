@@ -9,7 +9,7 @@
 #import "TweetCell.h"
 #import "APIManager.h"
 #import "DateTools.h"
-
+#import "NSDate+DateTools.h"
 
 @implementation TweetCell
 

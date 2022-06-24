@@ -41,12 +41,30 @@
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         // Configure the input format to parse the date string
         formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
+        
         // Convert String to Date
         NSDate *date = [formatter dateFromString:createdAtOriginalString];
 
-        self.createdAtString = [formatter stringFromDate:date];
+        self.date = date;
 
+        self.createdAtString = self.date.shortTimeAgoSinceNow;
+        
+        NSLog(@"%@", [formatter stringFromDate:date]);
+        
+        
+//        self.createdAtString = [formatter stringFromDate:date];
 
+        
+        self.videoUrlArray = [[NSMutableArray alloc] init];
+        self.imageUrlArray = [[NSMutableArray alloc] init];
+        NSArray *mediaUrls = dictionary[@"entities"][@"media"];
+        NSArray *videoUrls = dictionary[@"entities"][@"urls"];
+        for (NSDictionary *url in videoUrls) {
+            [self.videoUrlArray addObject:url[@"expanded_url"]];
+        }
+        for (NSDictionary *url in mediaUrls) {
+            [self.imageUrlArray addObject:url[@"media_url_https"]];
+        }
     }
     return self;
 }

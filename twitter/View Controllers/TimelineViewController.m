@@ -62,6 +62,22 @@
     }];
 }
 
+- (void)fetchNewTimeline {
+    Tweet *lastTweet = self.tweetsArray[self.tweetsArray.count - 1];
+    [[APIManager shared] getHomeTimelineAfterIdWithCompletion:lastTweet.idStr completion:^(NSArray *tweets, NSError *error) {
+        if (tweets) {
+            NSLog(@"😎😎😎 Successfully loaded more tweets");
+            for(Tweet *tweet in tweets) {
+                [self.tweetsArray addObject:tweet];
+            }
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+        } else {
+            NSLog(@"😫😫😫 Error getting more tweets: %@", error.localizedDescription);
+        }
+    }];
+}
+
 - (void)didTweet:(Tweet *)tweet {
     [self.tweetsArray insertObject:tweet atIndex:0];
     [self.tableView reloadData];
@@ -73,6 +89,8 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    
+    
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     
     Tweet *tweet = self.tweetsArray[indexPath.row];
@@ -95,13 +113,9 @@
     
     cell.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
     cell.favoriteLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
-        
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
     
-    NSDate *date = [formatter dateFromString:tweet.createdAtString];
-    [cell formatDate:date];
-//    cell.dateLabel.text = tweet.createdAtString;
+    cell.dateLabel.text = tweet.createdAtString;
+        
     NSLog(@"%@", tweet.createdAtString);
     cell.delegate = self;
     
