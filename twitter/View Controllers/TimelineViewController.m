@@ -16,8 +16,10 @@
 #import "DetailsViewController.h"
 #import "ProfileViewController.h"
 #import "DateTools.h"
+#import "ReplyButton.h"
+#import "ReplyViewController.h"
 
-@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, TweetCellDelegate>
+@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, ReplyViewControllerDelegate, TweetCellDelegate>
 - (IBAction)didTapLogout:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -164,7 +166,17 @@
 
 }
 
+- (IBAction)didReply:(id)sender {
+    ReplyButton *buttonClicked = (ReplyButton *)sender;
+    ReplyViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ReplyViewController"];
+    viewController.tweet = buttonClicked.originalTweet;
+    viewController.delegate = self;
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
 - (void)tweetCell:(TweetCell *)tweetCell didTap:(User *)user{
     [self performSegueWithIdentifier:@"profileSegue" sender:user];
 }
+
+
 @end
