@@ -27,7 +27,7 @@ The following **stretch** features are implemented:
 
 - [x] Be able to **unlike** or **un-retweet** by tapping a liked or retweeted Tweet button, respectively. (Doing so will decrement the count for each)
 - [ ] Click on links that appear in Tweets
-- [ ] See embedded media in Tweets that contain images or videos
+- [x] See embedded media in Tweets that contain images or videos
 - [ ] Reply to any Tweet (**2 points**)
   - Replies should be prefixed with the username
   - The `reply_id` should be set when posting the tweet
@@ -42,6 +42,7 @@ The following **stretch** features are implemented:
 The following **additional** features are implemented:
 
 - [X] Disable the Compose button if the character count exceeds the limit
+- [X] Users could retweet/unretweet, favorite/unfavorite a Tweet in the Details View Controller
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
