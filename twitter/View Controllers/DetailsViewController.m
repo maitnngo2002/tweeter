@@ -9,6 +9,7 @@
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "APIManager.h"
+#import "WebKit/WebKit.h"
 
 @interface DetailsViewController ()
 
@@ -24,7 +25,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *retweetLabel;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
-
+@property (weak, nonatomic) IBOutlet WKWebView *mediaWebView;
+@property (weak, nonatomic) IBOutlet UIImageView *mediaImageView;
 @end
 
 @implementation DetailsViewController
@@ -60,6 +62,21 @@
 
     self.retweetCount.text = [retweetNum stringByAppendingString:@" Retweets"];
     self.favoriteCount.text = [favoriteNum stringByAppendingString:@" Likes"];
+    
+    self.mediaWebView.scrollView.scrollEnabled = NO;
+    if(self.tweet.imageUrlArray.count > 0) {
+        NSString *urlString = [self.tweet.imageUrlArray objectAtIndex:0];
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSData *urlData = [NSData dataWithContentsOfURL:url];
+        self.mediaImageView.image = [UIImage imageWithData:urlData];
+    }
+    if (self.tweet.videoUrlArray.count > 0) {
+        NSString *urlString = [self.tweet.videoUrlArray objectAtIndex:0];
+        NSURLRequest *mediaRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]
+                                                   cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                                   timeoutInterval:10.0];
+        [self.mediaWebView loadRequest:mediaRequest];
+    }
 }
 
 - (IBAction)didTapRetweet:(id)sender {
