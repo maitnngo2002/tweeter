@@ -41,7 +41,8 @@
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         // Configure the input format to parse the date string
         formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
-        
+        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+
         // Convert String to Date
         NSDate *date = [formatter dateFromString:createdAtOriginalString];
 
