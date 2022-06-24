@@ -43,10 +43,10 @@ The following **additional** features are implemented:
 
 - [X] Disable the Compose button if the character count exceeds the limit
 - [X] Users could retweet/unretweet, favorite/unfavorite a Tweet in the Details View Controller
-
+- [X] User's profile page also includes scroll views of their tweets
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
+1. 
 2.
 
 ## Video Walkthrough
