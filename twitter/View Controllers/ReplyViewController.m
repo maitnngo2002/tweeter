@@ -17,8 +17,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *tweetTagName;
-@property (weak, nonatomic) IBOutlet UITextView *tweetTextView;
 @property (weak, nonatomic) IBOutlet UILabel *replyToLabel;
+@property (weak, nonatomic) IBOutlet UILabel *screenName;
+@property (weak, nonatomic) IBOutlet UITextView *tweetTextView;
 
 @property (weak, nonatomic) IBOutlet ProfileButton *tweetUserButton;
 @property (weak, nonatomic) IBOutlet ProfileButton *ownUserButton;
@@ -33,6 +34,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    // get own user info
     [[APIManager shared] getCurrentUser:^(User *user, NSError *error) {
          if(error) {
               NSLog(@"Error fetching user information: %@", error.localizedDescription);

@@ -90,6 +90,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     
@@ -112,6 +113,9 @@
     
     [cell.profileView setImageWithURL:profileURL];
     
+    // Enable reply button
+    cell.replyButton.originalTweet = tweet;
+    [cell.replyButton addTarget:self action:@selector(didReply:) forControlEvents:UIControlEventTouchUpInside];
     
     cell.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
     cell.favoriteLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
@@ -120,6 +124,11 @@
         
     NSLog(@"%@", tweet.createdAtString);
     cell.delegate = self;
+    
+    if(indexPath.row == self.tweetsArray.count - 1) {
+        [self fetchNewTimeline];
+        NSLog(@"%@", self.tweetsArray);
+    }
     
     return cell;
 }

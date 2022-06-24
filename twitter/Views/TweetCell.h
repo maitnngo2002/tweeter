@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
 #import "User.h"
+#import "ReplyButton.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,8 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UILabel *favoriteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UIButton *replyButton;
 @property (weak, nonatomic) IBOutlet UILabel *replyLabel;
+@property (weak, nonatomic) IBOutlet ReplyButton *replyButton;
 
 @property (strong, nonatomic) Tweet *tweet;
 - (void) formatDate:(NSDate*) date;
