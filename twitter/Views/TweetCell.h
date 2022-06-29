@@ -30,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *replyLabel;
 @property (weak, nonatomic) IBOutlet ReplyButton *replyButton;
+@property (weak, nonatomic) IBOutlet UIImageView *mediaImageView;
+@property (weak, nonatomic) IBOutlet UIWebView *mediaWebView;
 
 @property (strong, nonatomic) Tweet *tweet;
 - (void) formatDate:(NSDate*) date;
