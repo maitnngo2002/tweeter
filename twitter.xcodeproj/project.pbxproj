@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,7 +17,17 @@
 		6AD278F620BCB68B0085BC29 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD278F520BCB68B0085BC29 /* APIManager.m */; };
 		6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD2790520BCC0380085BC29 /* LoginViewController.m */; };
 		6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD2790820BCC04D0085BC29 /* TimelineViewController.m */; };
-		D6F928C728611D8500CD67A1 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6F928C628611D8500CD67A1 /* Keys.plist */; };
+		D630C01228627B7B00690BCA /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = D630C01128627B7B00690BCA /* Keys.plist */; };
+		D630C0152862A09C00690BCA /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D630C0142862A09C00690BCA /* ComposeViewController.m */; };
+		D630C018286380E800690BCA /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D630C017286380E800690BCA /* DetailsViewController.m */; };
+		D630C01B28638D6700690BCA /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D630C01A28638D6700690BCA /* ProfileViewController.m */; };
+		D630C01E286394C900690BCA /* UserTweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D630C01D286394C900690BCA /* UserTweetCell.m */; };
+		D641883B28663ACF0011F064 /* ProfileButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D641883A28663ACF0011F064 /* ProfileButton.m */; };
+		D664A15228662B8A00BA039B /* ReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D664A15128662B8A00BA039B /* ReplyViewController.m */; };
+		D664A15528662DB800BA039B /* ReplyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D664A15428662DB800BA039B /* ReplyButton.m */; };
+		D6FC7AEB2862639F001864EF /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FC7AEA2862639F001864EF /* User.m */; };
+		D6FC7AEE286263CE001864EF /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FC7AED286263CE001864EF /* Tweet.m */; };
+		D6FC7AF128626928001864EF /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FC7AF028626928001864EF /* TweetCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +50,27 @@
 		6AD2790720BCC04D0085BC29 /* TimelineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		6AD2790820BCC04D0085BC29 /* TimelineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		75895B6507775E8AFBEEA2D9 /* Pods-twitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-twitter/Pods-twitter.debug.xcconfig"; sourceTree = "<group>"; };
-		D6F928C628611D8500CD67A1 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		D630C01128627B7B00690BCA /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		D630C0132862A09C00690BCA /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		D630C0142862A09C00690BCA /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		D630C016286380E800690BCA /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		D630C017286380E800690BCA /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		D630C01928638D6700690BCA /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		D630C01A28638D6700690BCA /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		D630C01C286394C900690BCA /* UserTweetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserTweetCell.h; sourceTree = "<group>"; };
+		D630C01D286394C900690BCA /* UserTweetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserTweetCell.m; sourceTree = "<group>"; };
+		D641883928663ACF0011F064 /* ProfileButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileButton.h; sourceTree = "<group>"; };
+		D641883A28663ACF0011F064 /* ProfileButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileButton.m; sourceTree = "<group>"; };
+		D664A15028662B8A00BA039B /* ReplyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplyViewController.h; sourceTree = "<group>"; };
+		D664A15128662B8A00BA039B /* ReplyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReplyViewController.m; sourceTree = "<group>"; };
+		D664A15328662DB800BA039B /* ReplyButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplyButton.h; sourceTree = "<group>"; };
+		D664A15428662DB800BA039B /* ReplyButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReplyButton.m; sourceTree = "<group>"; };
+		D6FC7AE92862639F001864EF /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		D6FC7AEA2862639F001864EF /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		D6FC7AEC286263CE001864EF /* Tweet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
+		D6FC7AED286263CE001864EF /* Tweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
+		D6FC7AEF28626928001864EF /* TweetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
+		D6FC7AF028626928001864EF /* TweetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +125,7 @@
 				6AD278E320BC4B970085BC29 /* LaunchScreen.storyboard */,
 				6AD278E620BC4B970085BC29 /* Info.plist */,
 				6AD278E720BC4B970085BC29 /* main.m */,
-				D6F928C628611D8500CD67A1 /* Keys.plist */,
+				D630C01128627B7B00690BCA /* Keys.plist */,
 			);
 			path = twitter;
 			sourceTree = "<group>";
@@ -114,6 +144,10 @@
 		6AD278F820BCBC140085BC29 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D6FC7AE92862639F001864EF /* User.h */,
+				D6FC7AEA2862639F001864EF /* User.m */,
+				D6FC7AEC286263CE001864EF /* Tweet.h */,
+				D6FC7AED286263CE001864EF /* Tweet.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,6 +155,14 @@
 		6AD278FF20BCBF280085BC29 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D6FC7AEF28626928001864EF /* TweetCell.h */,
+				D6FC7AF028626928001864EF /* TweetCell.m */,
+				D630C01C286394C900690BCA /* UserTweetCell.h */,
+				D630C01D286394C900690BCA /* UserTweetCell.m */,
+				D664A15328662DB800BA039B /* ReplyButton.h */,
+				D664A15428662DB800BA039B /* ReplyButton.m */,
+				D641883928663ACF0011F064 /* ProfileButton.h */,
+				D641883A28663ACF0011F064 /* ProfileButton.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -132,6 +174,14 @@
 				6AD2790520BCC0380085BC29 /* LoginViewController.m */,
 				6AD2790720BCC04D0085BC29 /* TimelineViewController.h */,
 				6AD2790820BCC04D0085BC29 /* TimelineViewController.m */,
+				D630C0132862A09C00690BCA /* ComposeViewController.h */,
+				D630C0142862A09C00690BCA /* ComposeViewController.m */,
+				D630C016286380E800690BCA /* DetailsViewController.h */,
+				D630C017286380E800690BCA /* DetailsViewController.m */,
+				D630C01928638D6700690BCA /* ProfileViewController.h */,
+				D630C01A28638D6700690BCA /* ProfileViewController.m */,
+				D664A15028662B8A00BA039B /* ReplyViewController.h */,
+				D664A15128662B8A00BA039B /* ReplyViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -156,6 +206,7 @@
 				6AD278D120BC4B950085BC29 /* Sources */,
 				6AD278D220BC4B950085BC29 /* Frameworks */,
 				6AD278D320BC4B950085BC29 /* Resources */,
+				6029AD1EBEFA63EED171BC15 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -203,7 +254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6F928C728611D8500CD67A1 /* Keys.plist in Resources */,
+				D630C01228627B7B00690BCA /* Keys.plist in Resources */,
 				6AD278E520BC4B970085BC29 /* LaunchScreen.storyboard in Resources */,
 				6AD278E220BC4B970085BC29 /* Assets.xcassets in Resources */,
 				6AD278E020BC4B950085BC29 /* Main.storyboard in Resources */,
@@ -231,6 +282,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6029AD1EBEFA63EED171BC15 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-twitter/Pods-twitter-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-twitter/Pods-twitter-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-twitter/Pods-twitter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -238,11 +306,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D630C01E286394C900690BCA /* UserTweetCell.m in Sources */,
+				D6FC7AF128626928001864EF /* TweetCell.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
+				D630C018286380E800690BCA /* DetailsViewController.m in Sources */,
+				D6FC7AEB2862639F001864EF /* User.m in Sources */,
+				D630C0152862A09C00690BCA /* ComposeViewController.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
+				D641883B28663ACF0011F064 /* ProfileButton.m in Sources */,
+				D6FC7AEE286263CE001864EF /* Tweet.m in Sources */,
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,
 				6AD278DA20BC4B950085BC29 /* AppDelegate.m in Sources */,
 				6AD278F620BCB68B0085BC29 /* APIManager.m in Sources */,
+				D664A15228662B8A00BA039B /* ReplyViewController.m in Sources */,
+				D664A15528662DB800BA039B /* ReplyButton.m in Sources */,
+				D630C01B28638D6700690BCA /* ProfileViewController.m in Sources */,
 				6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,6 +465,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = twitter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -405,6 +484,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = twitter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
