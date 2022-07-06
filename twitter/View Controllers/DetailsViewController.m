@@ -36,11 +36,8 @@
     // Do any additional setup after loading the view.
     
     User *user = self.tweet.user;
-    
-    self.authorLabel.text = user.name;
-    NSString *at = @"@";
-    NSString *username = [at stringByAppendingString:user.screenName];
-    self.userLabel.text = username;
+
+    self.userLabel.text = [@"@" stringByAppendingString:user.screenName];
     self.tweetLabel.text = self.tweet.text;
     
     NSURL *profileURL = [NSURL URLWithString:user.profilePicture];
@@ -136,15 +133,5 @@
         }];
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

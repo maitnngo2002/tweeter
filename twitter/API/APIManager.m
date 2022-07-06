@@ -9,7 +9,7 @@
 #import "APIManager.h"
 #import "Tweet.h"
 
-static NSString * const baseURLString = @"https://api.twitter.com";
+static NSString *const baseURLString = @"https://api.twitter.com";
 
 @interface APIManager()
 
@@ -28,10 +28,10 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 
 - (instancetype)init {
     
-    NSURL *baseURL = [NSURL URLWithString:baseURLString];
+    NSURL *const baseURL = [NSURL URLWithString:baseURLString];
 
-    NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
-    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
+    NSString *const path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
+    NSDictionary *const dict = [NSDictionary dictionaryWithContentsOfFile: path];
     NSString *key = [dict objectForKey: @"consumer_Key"];
     NSString *secret = [dict objectForKey: @"consumer_Secret"];
     
@@ -57,8 +57,8 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 }
 
 - (void)postReplyToTweet:(NSString *)text statusId:(NSString *)statusId completion:(void (^)(Tweet *, NSError *))completion {
-    NSString *urlString = @"1.1/statuses/update.json";
-    NSDictionary *parameters = @{@"status":text, @"in_reply_to_status_id":statusId};
+    NSString *const urlString = @"1.1/statuses/update.json";
+    NSDictionary *const parameters = @{@"status":text, @"in_reply_to_status_id":statusId};
     [self postTweetRequest:urlString parameters:parameters completion:^(Tweet *tweet, NSError *error) {
         if(tweet) {
             completion(tweet, nil);
@@ -98,8 +98,8 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 }
 
 - (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion {
-    NSString *urlString = @"1.1/statuses/update.json";
-    NSDictionary *parameters = @{@"status": text};
+    NSString *const urlString = @"1.1/statuses/update.json";
+    NSDictionary *const parameters = @{@"status": text};
     [self postTweetRequest:urlString parameters:parameters completion:^(Tweet *tweet, NSError *error) {
         if(tweet) {
             completion(tweet, nil);
@@ -111,8 +111,8 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 }
 
 - (void)favorite:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion {
-    NSString *urlString = @"1.1/favorites/create.json";
-    NSDictionary *parameters = @{@"id": tweet.idStr};
+    NSString *const urlString = @"1.1/favorites/create.json";
+    NSDictionary *const parameters = @{@"id": tweet.idStr};
     [self postTweetRequest:urlString parameters:parameters completion:^(Tweet *tweet, NSError *error) {
         if(tweet) {
             completion(tweet, nil);
@@ -124,8 +124,8 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 }
 
 - (void)unfavorite:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion {
-    NSString *urlString = @"1.1/favorites/destroy.json";
-    NSDictionary *parameters = @{@"id": tweet.idStr};
+    NSString *const urlString = @"1.1/favorites/destroy.json";
+    NSDictionary *const parameters = @{@"id": tweet.idStr};
     [self postTweetRequest:urlString parameters:parameters completion:^(Tweet *tweet, NSError *error) {
         if(tweet) {
             completion(tweet, nil);
@@ -137,9 +137,8 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 }
 
 - (void)retweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion {
-    NSString *urlEnd = [tweet.idStr stringByAppendingString:@".json"];
-    NSString *urlString = [@"1.1/statuses/retweet/" stringByAppendingString:urlEnd];
-    NSDictionary *parameters = @{@"id": tweet.idStr};
+    NSString *const urlString = [NSString stringWithFormat:@"1.1/statuses/retweet/%@.json", tweet.idStr];
+    NSDictionary *const parameters = @{@"id": tweet.idStr};
     [self postTweetRequest:urlString parameters:parameters completion:^(Tweet *tweet, NSError *error) {
         if(tweet) {
             completion(tweet, nil);
@@ -151,8 +150,8 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 }
 
 - (void)unretweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion {
-    NSString *urlEnd = [tweet.idStr stringByAppendingString:@".json"];
-    NSString *urlString = [@"1.1/statuses/unretweet/" stringByAppendingString:urlEnd];
+    NSString *const urlEnd = [tweet.idStr stringByAppendingString:@".json"];
+    NSString *const urlString = [@"1.1/statuses/unretweet/" stringByAppendingString:urlEnd];
     NSDictionary *parameters = @{@"id": tweet.idStr};
     [self postTweetRequest:urlString parameters:parameters completion:^(Tweet *tweet, NSError *error) {
         if(tweet) {
@@ -165,7 +164,7 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 }
 
 - (void)getCurrentUser:(void (^)(User *, NSError *))completion {
-    NSString *urlString = @"1.1/account/verify_credentials.json";
+    NSString *const urlString = @"1.1/account/verify_credentials.json";
     [self GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable userDictionary) {
         User *user = [[User alloc]initWithDictionary:userDictionary];
         completion(user, nil);

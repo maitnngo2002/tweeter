@@ -17,6 +17,8 @@
 
 @end
 
+static const NSInteger kMaxCharacterCount = 280;
+
 @implementation ComposeViewController
 
 - (void)viewDidLoad {
@@ -28,10 +30,13 @@
 }
 - (void)textViewDidChange:(UITextView *)textView {
     NSString *text = self.textView.text;
-    NSInteger *count = [text length];
+    NSInteger count = [text length];
     NSString *countString = [NSString stringWithFormat:@"%lu", count];
     self.characterCountLabel.text = countString;
-    if(count > 280) {
+    
+    self.characterCountLabel.text = [NSString stringWithFormat:@"%lu", self.textView.text.length];
+
+    if(count > kMaxCharacterCount) {
         [self.warningLabel setHidden:NO];
         self.characterCountLabel.textColor = [UIColor redColor];
         self.tweetButton.enabled = NO;

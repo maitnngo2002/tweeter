@@ -28,6 +28,9 @@
 
 @end
 
+NSString *const composeSegue = @"composeSegue";
+NSString *const profileSegue = @"profileSegue";
+
 @implementation TimelineViewController
 
 - (void)viewDidLoad {
@@ -52,7 +55,6 @@
         if (tweets) {
             for (Tweet *tweet in tweets) {
                 [self.tweetsArray addObject:tweet];
-                NSString *text = tweet.text;
             }
             [self.tableView reloadData];
         } else {
@@ -62,19 +64,21 @@
     }];
 }
 
-- (void)fetchNewTimeline {
-    Tweet *lastTweet = self.tweetsArray[self.tweetsArray.count - 1];
-    [[APIManager shared] getHomeTimelineAfterIdWithCompletion:lastTweet.idStr completion:^(NSArray *tweets, NSError *error) {
-        if (tweets) {
-            for(Tweet *tweet in tweets) {
-                [self.tweetsArray addObject:tweet];
+- (void)fetchNextTimelinePage {
+    if (self.tweetsArray) {
+        Tweet *lastTweet = [self.tweetsArray lastObject];
+        [[APIManager shared] getHomeTimelineAfterIdWithCompletion:lastTweet.idStr completion:^(NSArray *tweets, NSError *error) {
+            if (tweets) {
+                for(Tweet *tweet in tweets) {
+                    [self.tweetsArray addObject:tweet];
+                }
+                [self.tableView reloadData];
+                [self.refreshControl endRefreshing];
+            } else {
+                NSLog(@"😫😫😫 Error getting more tweets: %@", error.localizedDescription);
             }
-            [self.tableView reloadData];
-            [self.refreshControl endRefreshing];
-        } else {
-            NSLog(@"😫😫😫 Error getting more tweets: %@", error.localizedDescription);
-        }
-    }];
+        }];
+    }
 }
 
 - (void)didTweet:(Tweet *)tweet {
@@ -83,8 +87,6 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    
-    
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     
     Tweet *tweet = self.tweetsArray[indexPath.row];
@@ -99,7 +101,7 @@
     cell.userLabel.text = username;
     cell.tweetLabel.text = tweet.text;
     
-    NSURL *profileURL = [NSURL URLWithString:user.profilePicture];
+    NSURL *const profileURL = [NSURL URLWithString:user.profilePicture];
     cell.profileView.image = nil;
     
     [cell.profileView setImageWithURL:profileURL];
@@ -116,9 +118,8 @@
     cell.delegate = self;
     
     if(indexPath.row == self.tweetsArray.count - 1) {
-        [self fetchNewTimeline];
+        [self fetchNextTimelinePage];
     }
-    
     return cell;
 }
     
@@ -126,23 +127,12 @@
     return self.tweetsArray.count;
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"composeSegue"]) {
+    if ([segue.identifier isEqualToString:composeSegue]) {
         UINavigationController *navigationController = [segue destinationViewController];
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
         composeController.delegate = self;
-    } else if ([segue.identifier isEqualToString:@"profileSegue"]) {
+    } else if ([segue.identifier isEqualToString:profileSegue]) {
         ProfileViewController *userProfileViewController = [segue destinationViewController];
         userProfileViewController.user = sender;
     } else {
