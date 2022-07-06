@@ -28,8 +28,8 @@
 
 @end
 
-NSString *const composeSegue = @"composeSegue";
-NSString *const profileSegue = @"profileSegue";
+NSString static *const composeSegue = @"composeSegue";
+NSString static *const profileSegue = @"profileSegue";
 
 @implementation TimelineViewController
 
