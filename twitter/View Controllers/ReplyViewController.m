@@ -40,7 +40,6 @@
               NSLog(@"Error fetching user information: %@", error.localizedDescription);
          }
          else{
-             NSLog(@"Successfully fetched user info: %@", user.name);
              self.ownUser = user;
              [self refreshData];
          }
@@ -86,7 +85,6 @@
             NSLog(@"Error replying to Tweet: %@", error.localizedDescription);
         }
         else{
-            NSLog(@"Reply Tweet Success!");
             [self.delegate didReply:self.tweet.idStr];
         }
     }];

@@ -50,11 +50,9 @@
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
-            NSLog(@"😎😎😎 Successfully loaded home timeline");
             for (Tweet *tweet in tweets) {
                 [self.tweetsArray addObject:tweet];
                 NSString *text = tweet.text;
-                NSLog(@"%@", text);
             }
             [self.tableView reloadData];
         } else {
@@ -68,7 +66,6 @@
     Tweet *lastTweet = self.tweetsArray[self.tweetsArray.count - 1];
     [[APIManager shared] getHomeTimelineAfterIdWithCompletion:lastTweet.idStr completion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
-            NSLog(@"😎😎😎 Successfully loaded more tweets");
             for(Tweet *tweet in tweets) {
                 [self.tweetsArray addObject:tweet];
             }
@@ -116,12 +113,10 @@
     
     cell.dateLabel.text = tweet.createdAtString;
         
-    NSLog(@"%@", tweet.createdAtString);
     cell.delegate = self;
     
     if(indexPath.row == self.tweetsArray.count - 1) {
         [self fetchNewTimeline];
-        NSLog(@"%@", self.tweetsArray);
     }
     
     return cell;

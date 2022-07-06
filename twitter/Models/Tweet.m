@@ -50,12 +50,6 @@
 
         self.createdAtString = self.date.shortTimeAgoSinceNow;
         
-        NSLog(@"%@", [formatter stringFromDate:date]);
-        
-        
-//        self.createdAtString = [formatter stringFromDate:date];
-
-        
         self.videoUrlArray = [[NSMutableArray alloc] init];
         self.imageUrlArray = [[NSMutableArray alloc] init];
         NSArray *mediaUrls = dictionary[@"entities"][@"media"];

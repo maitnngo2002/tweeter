@@ -86,8 +86,11 @@ static NSString * const baseURLString = @"https://api.twitter.com";
    parameters:@{@"tweet_mode":@"extended", @"max_id":maxIdStr} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
            // Success
            NSMutableArray *tweets = [Tweet tweetsWithArray:tweetDictionaries];
+        if (tweets.count > 0) {
             [tweets removeObjectAtIndex:0];
-           completion(tweets, nil);
+            completion(tweets, nil);
+        }
+            
        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
            // There was a problem
            completion(nil, error);
